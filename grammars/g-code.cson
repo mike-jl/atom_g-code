@@ -1,0 +1,16 @@
+'fileTypes': [
+  'mpf',
+  'spf',
+]
+'name': 'G-Code'
+'patterns': [
+  {
+    'match': ';.*'
+    'name': 'comment.g-code'
+  }
+  {
+    'match': '^[nN][0-9]+'
+    'name': 'line-number.g-code'
+  }
+]
+'scopeName': 'source.g-code'
