@@ -1,11 +1,3 @@
-# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
-'context-menu':
-  'atom-text-editor': [
-    {
-      'label': 'Toggle g-code'
-      'command': 'g-code:toggle'
-    }
-  ]
 'menu': [
   {
     'label': 'Packages'
@@ -13,8 +5,12 @@
       'label': 'g-code'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'g-code:toggle'
+          'label': 'Renumber'
+          'command': 'g-code:renumbering'
+        }
+        {
+          'label': 'Remove Numbering'
+          'command': 'g-code:delNumbering'
         }
       ]
     ]

@@ -2,15 +2,58 @@
   'mpf',
   'spf',
 ]
+'scopeName': 'source.g-code'
 'name': 'G-Code'
 'patterns': [
   {
-    'match': ';.*'
+    'match': '(^[nN][0-9]+|;.*)'
     'name': 'comment.g-code'
   }
   {
-    'match': '^[nN][0-9]+'
-    'name': 'line-number.g-code'
+    'match': '(?i:(\\bIF\\b)|(\\bELSE\\b)|(\\bENDIF\\b)|(\\bGOTO[fsb]+\\b)|(\\bWHILE\\b)|(\\bENDWHILE\\b)|(\\bFOR\\b)|(\\bTO\\b)|(\\bENDFOR\\b)|(\\bSTOPRE\\b))'
+    'name': 'keyword.control.g-code'
+  }
+  {
+    'match': '(?i:(\\=)|(\\+)|(\\<\\<)|(\\-)|(b_and)|(b_or)|(and)|(or))'
+    'name': 'keyword.operator.g-code'
+  }
+  {
+    'match': '(?i:(\\bDEF\\b))'
+    'name': 'storage.type.g-code'
+  }
+  {
+    'match': '(?i:(\\bINT\\b)|(\\bBOOL\\b)|(\\bSTRING\\[.+\\])|(\\bREAL\\b)|(\\bCHAR\\b)|(\\bAXIS\\b)|(\\bFRAME\\b))'
+    'name': 'storage.type.g-code'
+  }
+  {
+    'match': '(?i:((?<![\\_a-z])[MHSD](((\\d+|\\[.+\\])(\\=(\\d+|\\S+))?|\\=(\\d+|\\S+))))|((?<![\\_a-z])[TG](\\d+|\\=(".+"|\\S+))))'
+    'name': 'support.function.g-code'
+  }
+  {
+    'match': '(?i:((?<![\\_a-z])[XYZABF](\\d+|(\\d+)?\\=(\\d+|\\S+))))'
+    'name': 'support.function.any-method.g-code'
+  }
+  {
+    'match': '(?i:(\\$[\\w\\[\\]\\,]+)|((?<![\\_a-z])R[0-9]+))'
+    'name': 'variable.other.g-code'
+  }
+  {
+    'match': '(?i:((?<![\\_a-z\\d])(\\.)?\\d+(\\.\\d+)?))'
+    'name': 'constant.numeric.g-code'
+  }
+  {
+    'match': '(?i:(\'[bh]?[\\d]+\'))'
+    'name': 'constant.numeric.g-code'
+  }
+  {
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.g-code'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.g-code'
+    'name': 'string.quoted.double.g-code'
   }
 ]
-'scopeName': 'source.g-code'

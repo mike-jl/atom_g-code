@@ -8,20 +8,20 @@ module.exports = GCode =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'g-code: Renumbering': => @renumbering()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'g-code:renumbering': => @renumbering()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'g-code:delNumbering': => @delNumbering()
 
   deactivate: ->
     @subscriptions.dispose()
 
   renumbering: ->
     if editor = atom.workspace.getActiveTextEditor()
-      editor.scan(/^N[0-9]+( +|)/g, ({replace}) -> replace(""))
+      editor.scan(/^N[0-9]+\s?/g, ({replace}) -> replace(""))
       oldpos = editor.getCursorBufferPosition()
       lines = editor.getLineCount()
       linecorr = 0
       for line in [0...lines]
         if editor.lineTextForBufferRow(line) == ""
-          console.log line
           linecorr = linecorr + 1
         else
           editor.setCursorBufferPosition([line,0])
@@ -29,3 +29,7 @@ module.exports = GCode =
           if line == lines - 1
             editor.insertNewlineBelow()
       editor.setCursorBufferPosition(oldpos)
+
+  delNumbering: ->
+    if editor = atom.workspace.getActiveTextEditor()
+      editor.scan(/^N[0-9]+\s?/g, ({replace}) -> replace(""))
