@@ -10,40 +10,44 @@
     'name': 'comment.g-code'
   }
   {
-    'match': '(?i:(\\bIF\\b)|(\\bELSE\\b)|(\\bENDIF\\b)|(\\bGOTO[fsb]+\\b)|(\\bWHILE\\b)|(\\bENDWHILE\\b)|(\\bFOR\\b)|(\\bTO\\b)|(\\bENDFOR\\b)|(\\bSTOPRE\\b))'
+    'match': '(?i:(?:\\bIF\\b)|(?:\\bELSE\\b)|(?:\\bENDIF\\b)|(?:\\bGOTO[fsb]+\\b)|(?:\\bWHILE\\b)|(?:\\bENDWHILE\\b)|(?:\\bFOR\\b)|(?:\\bTO\\b)|(?:\\bENDFOR\\b)|(?:\\bSTOPRE\\b))'
     'name': 'keyword.control.g-code'
   }
   {
-    'match': '(?i:(\\=)|(\\+)|(\\<\\<)|(\\-)|(b_and)|(b_or)|(and)|(or))'
-    'name': 'keyword.operator.g-code'
+    'match': '(?i:(?:\\=)|(?:\\+)|(?:\\<\\<)|(?:\\-)|(?:b_and)|(?:b_or)|(?:and)|(?:or))'
+    'name': 'constant.other.symbol.g-code'
   }
   {
-    'match': '(?i:(\\bDEF\\b))'
+    'match': '(?i:(?:\\bDEF\\b))'
     'name': 'storage.type.g-code'
   }
   {
-    'match': '(?i:(\\bINT\\b)|(\\bBOOL\\b)|(\\bSTRING\\[.+\\])|(\\bREAL\\b)|(\\bCHAR\\b)|(\\bAXIS\\b)|(\\bFRAME\\b))'
+    'match': '(?i:(?:\\bINT\\b)|(?:\\bBOOL\\b)|(?:\\bSTRING\\[.+?\\])|(?:\\bREAL\\b)|(?:\\bCHAR\\b)|(?:\\bAXIS\\b)|(?:\\bFRAME\\b))'
     'name': 'storage.type.g-code'
   }
   {
-    'match': '(?i:((?<![\\_a-z])[MHSD](((\\d+|\\[.+\\])(\\=(\\d+|\\S+))?|\\=(\\d+|\\S+))))|((?<![\\_a-z])[TG](\\d+|\\=(".+"|\\S+))))'
+    'match': '(?i:(?:(?<![\\_a-z])[MHSDTG](?:\\=(?:.+?[\\d\\]](?=[a-z])|.+?(?=\\s))|\\d+\\=(?:.+?[\\d\\]](?=[a-z])|.+?(?=\\s))|\\d+)))'
     'name': 'support.function.g-code'
   }
   {
-    'match': '(?i:((?<![\\_a-z])[XYZABF](\\d+|(\\d+)?\\=(\\d+|\\S+))))'
+    'match': '(?i:(?:(?<![\\_a-z])(?:[XYZABF]|ANG)(?:(?:\\d+|\\=(?:.+?[\\d\\]](?=[a-z])|.+?(?=\\s))))))'
     'name': 'support.function.any-method.g-code'
   }
   {
-    'match': '(?i:(\\$[\\w\\[\\]\\,]+)|((?<![\\_a-z])R[0-9]+))'
+    'match': '(?<![\\_a-z])(?:(?:\\$\\w+?(?:(?<br1>\\[(?:(?>[^\\[\\]]+)|\\g<br1>)*\\]))?(?=[\\s\\=\\<\\>\\+\\-\\*\\,\\)]))|R(?:\\d+|(?<br2>\\[(?:(?>[^\\[\\]]+)|\\g<br2>)*\\])))'
     'name': 'variable.other.g-code'
   }
   {
-    'match': '(?i:((?<![\\_a-z\\d])(\\.)?\\d+(\\.\\d+)?))'
+    'match': '(?i:(?:(?<![\\_a-z\\d])(?:\\.)?\\d+(?:\\.\\d+)?))'
     'name': 'constant.numeric.g-code'
   }
   {
-    'match': '(?i:(\'[bh]?[\\d]+\'))'
+    'match': '(?i:(?:\'(?:b[01]+|h[0-9abcdef]+)\'))'
     'name': 'constant.numeric.g-code'
+  }
+  {
+    'match': '(?i:(?<![\\_a-z])(?:true|false))'
+    'name': 'constant.language.boolean.g-code'
   }
   {
     'begin': '"'

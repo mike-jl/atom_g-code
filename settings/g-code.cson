@@ -1,5 +1,5 @@
 '.source.g-code':
   'editor':
-    'commentStart': ';'
+    'commentStart': '; '
     'increaseIndentPattern': '(?i:(\\bIF\\b(?!.+GOTO))|(\\bWHILE\\b)|(\\bFOR\\b)|(\\bELSE\\b))'
     'decreaseIndentPattern': '(?i:(\\bENDIF\\b)|(\\bENDWHILE\\b)|(\\bENDFOR\\b)|(\\bELSE\\b))'

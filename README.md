@@ -1,5 +1,6 @@
-# g-code package
+# G-Code Package
 
-Add Renumbering Feature and basic g-code syntax..
+Add Option to Renumber and to remove the Numbering of a g-code Program.
+Add G-Code Grammar for SPF and MPF files (Siemens specific)
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![Screenrecoring](https://cloud.githubusercontent.com/assets/5451489/22648826/936a650e-ec78-11e6-9ff2-acc3bc684ea1.PNG)
