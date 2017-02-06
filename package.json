@@ -1,7 +1,7 @@
 {
   "name": "g-code",
   "main": "./lib/g-code",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Add Renumbering Feature and basic g-code syntax.",
   "keywords": [],
   "activationCommands": {
