@@ -1,6 +1,8 @@
 'fileTypes': [
   'mpf',
   'spf',
+  'g',
+  'gcode',
 ]
 'scopeName': 'source.g-code'
 'name': 'G-Code'
